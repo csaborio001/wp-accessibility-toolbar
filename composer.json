@@ -1,0 +1,12 @@
+{
+    "name": "scorpiotek/wp-accessibility-plugin",
+    "description": "Enables the use of an accessibility toolbar for any WordPress website",
+    "type": "wordpress-plugin",
+    "authors": [
+        {
+            "name": "csaborio",
+            "email": "csaborio@scorpiotek.com"
+        }
+    ],
+    "require": {}
+}
