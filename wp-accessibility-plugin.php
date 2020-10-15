@@ -24,6 +24,7 @@ require_once 'vendor/autoload.php';
 
 use ScorpioTek\WordPress\Accessibility\WPHooker;
 use ScorpioTek\WordPress\Accessibility\AssetLoader;
+use ScorpioTek\WordPress\Accessibility\OxyShortCodes;
 
 class WPInfrastructure {
 	public function __construct() {
@@ -62,6 +63,15 @@ class WPInfrastructure {
 				error_log( __( 'INFRASTRUCTURE ERROR: Class AssetLoader could not be found.', 'scorpiotek' ) );
 			}
 		}
+
+		/** Load all the Short Codes used in this project. */
+		if ( class_exists( OxyShortCodes::class ) ) {
+			$oxy_short_codes_loader = new OxyShortCodes();
+		} else {
+			if ( WP_DEBUG ) {
+				error_log( __( 'INFRASTRUCTURE ERROR: Class OxyShortCodes could not be found.', 'scorpiotek' ) );
+			}
+		}		
 	}
 }
 

@@ -9,17 +9,19 @@
 
 namespace ScorpioTek\WordPress\Accessibility;
 
+use ScorpioTek\WordPress\Accessibility\AccessibilityControls;
+
 class OxyShortCodes {
 
 	public function __construct() {
-		add_shortcode( 'add_sp_toolbar', array( $this, 'add_sp_toolbar' ) );
-
+		add_shortcode( 'add_st_accessibility_toolbar', array( $this, 'add_st_accessibility_toolbar' ) );
 	}
 
-	public function add_sp_toolbar() {
+	public function add_st_accessibility_toolbar() {
 		global $post;
 		/** Do stuff */
-
-		wp_reset_postdata();
+		// echo '<h1>Hello Cow</h1>';
+		// wp_reset_postdata();
+		AccessibilityControls::display_button_sizes();
 	}
 }
