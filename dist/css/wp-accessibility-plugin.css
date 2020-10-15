@@ -1,0 +1,14 @@
+/* Include Open Dyslexic Font */
+
+@font-face {
+	font-family: 'opendyslexicregular';
+	src: url('../fonts/opendyslexic-regular-webfont.woff2') format('woff2'),
+			 url('../fonts/opendyslexic-regular-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.opendyslexic {
+	font-family: 'opendyslexicregular';
+	font-size: 1.3rem;
+}

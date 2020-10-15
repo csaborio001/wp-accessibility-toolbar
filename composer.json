@@ -8,5 +8,10 @@
             "email": "csaborio@scorpiotek.com"
         }
     ],
-    "require": {}
+    "autoload": {
+        "psr-4": {
+            "ScorpioTek\\WordPress\\Accessibility\\": "src/",
+            "WPMuDev\\": "src/"
+        }
+    }
 }
