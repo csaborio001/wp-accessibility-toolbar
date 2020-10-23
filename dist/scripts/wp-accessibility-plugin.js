@@ -17,12 +17,12 @@
 	console.log( stylesheetDirectoryURI );
 	console.log( fontDirectoryURI );
 
-
-
 	if ( DEBUG ) {
 		console.log( `Local textButtonClicked: ${textButtonClicked}`);
 		console.log( `Cookie textButtonClicked: ${Cookies.get('textButtonClicked')}`);
 	}
+
+	
 	/*------------------------------------------------------------------
 	|																	|
 	|							Initialization		  				|
@@ -31,6 +31,8 @@
 	loadDyslexicFont();
 	restoreFontSizeFromCookie();
 	restoreFontFromCookie();
+	restoreContrastFromCookie();
+
 	var textButtonClicked;
 	if (isNaN(textButtonClicked)) {textButtonClicked = 0 };
 	$('body').FontSize({
@@ -75,7 +77,8 @@
 
 	$('#btn-reset').on('click', function() {
 		resetFontSize();
-		restoreFont();
+		resetFont();
+		resetContrast();
 		if (DEBUG) {
 			displayButtonInformation(this)
 		}
@@ -83,6 +86,13 @@
 
 	$('#btn-dyslexic').on('click', function() {
 		toggleDyslexicFont();
+		if (DEBUG) {
+			displayButtonInformation(this)
+		}
+	});
+
+	$('#btn-contrast').on('click', function() {
+		toggleHighContrast();
 		if (DEBUG) {
 			displayButtonInformation(this)
 		}
@@ -191,7 +201,7 @@
 			Cookies.set( 'currentFont', 'opendyslexicregular');
 			$(document.body).css('font-family', 'opendyslexicregular');
 		} else {
-			restoreFont();
+			resetFont();
 		}
 	}
 
@@ -207,12 +217,65 @@
 			$(document.body).css('font-family', fontToRestore);
 		}
 	}
-	function restoreFont() {
+	function resetFont() {
 		originalFont = Cookies.get('originalFont');
 		$(document.body).css('font-family', originalFont);
 		Cookies.set( 'currentFont', originalFont);
 	} 
 
+	/*------------------------------------------------------------------
+	|																	|
+	|							Dyslexic Font Routines			  		|
+	|																	| 
+	--------------------------------------------------------------------*/
+
+	function toggleHighContrast() {
+		highContrastEnabled = Cookies.get('highContrastEnabled');
+		if (DEBUG) {
+			console.log(`High Contrast Enabled: ${highContrastEnabled}`);
+		}
+		if ( undefined === highContrastEnabled ) {
+			Cookies.set('highContrastEnabled', false);
+			highContrastEnabled = 'false';
+		}
+		switchContrast(highContrastEnabled);
+	}
+
+	function switchContrast(highContrastEnabled) {
+		if ( 'false' == highContrastEnabled ) {
+			/** Stylesheet has not been appended */
+			if ( 0 === $('link[title=high-contrast]').length) {
+				$("head").append($("<link rel='stylesheet' title='high-contrast' href='" + stylesheetDirectoryURI + "a11y-contrast.css' type='text/css' media='screen' />"));
+			/** Stylesheet is appended, we only need to toggle the enabled switch. */
+			} else {
+				$('link[title=high-contrast]')[0].disabled=false;
+			}
+			Cookies.set('highContrastEnabled', true);
+		} else {
+			if ( 0 !== $('link[title=high-contrast]').length) {
+				$('link[title=high-contrast]')[0].disabled=true;
+				Cookies.set('highContrastEnabled', false);
+			}
+		}		
+	}
+	function restoreContrastFromCookie() {
+		highContrastEnabled = Cookies.get('highContrastEnabled');
+		if ( 'true' ===  highContrastEnabled ) {
+			switchContrast('false'); 
+		} else {
+			switchContrast('true');
+		}
+		
+	}
+
+	function resetContrast() {
+		highContrastEnabled = Cookies.get('highContrastEnabled');
+		if ( 'false' === highContrastEnabled ) {
+			return;
+		} else {
+			switchContrast('true')
+		}
+	}
 
 	/*------------------------------------------------------------------
 	|																	|

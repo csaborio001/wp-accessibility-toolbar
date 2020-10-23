@@ -65,7 +65,7 @@ class AssetLoader {
 			'uriParameters',
 			array(
 				'font_uri' => InfrastructureConstants::get_fonts_directory_uri(),
-				'css_uri'  => InfrastructureConstants::get_scripts_directory_uri(),
+				'css_uri'  => InfrastructureConstants::get_stylesheet_directory_uri(),
 			)
 		);
 	}

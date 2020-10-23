@@ -13,6 +13,7 @@ class AccessibilityControls {
 		echo '<button title="Reset Font" class="font-size-change" id="btn-reset" name="btn-reset">A</button>';
 		echo '<button title="Decrease Font Size" class="font-size-change" id="btn-decrease" name="btn-decrease">-A</button>';
 		echo '<button title="Increase Font Size" class="font-size-change" id="btn-increase" name="btn-increase">+A</button>';
-		echo '<button title="Change to Open Dyslexic Font" class="font-size-change" id="btn-dyslexic" name="btn-dyslexic">D</button>';
+		echo '<button title="Toggle Dyslexic Font" class="font-size-change" id="btn-dyslexic" name="btn-dyslexic">D</button>';
+		echo '<button title="Toggle High Contrast Mode" class="font-size-change" id="btn-contrast" name="btn-contrast">O</button>';
 	}
 }
