@@ -59,6 +59,15 @@ class AssetLoader {
 			InfrastructureConstants::get_plugin_version(),
 			true
 		);
+
+		\wp_localize_script(
+			'scorpiotek-accessibility',
+			'uriParameters',
+			array(
+				'font_uri' => InfrastructureConstants::get_fonts_directory_uri(),
+				'css_uri'  => InfrastructureConstants::get_scripts_directory_uri(),
+			)
+		);
 	}
 
 	public function load_plugin_stylesheets() {

@@ -10,6 +10,13 @@
 	const MAX_ZOOM = 5;
 	const MIN_ZOOM = 2;
 
+	/** Passed from PHP class assetloader so we can load resources dynamically. */
+	const stylesheetDirectoryURI = uriParameters.css_uri;
+	const fontDirectoryURI       = uriParameters.font_uri;
+
+	console.log( stylesheetDirectoryURI );
+	console.log( fontDirectoryURI );
+
 
 
 	if ( DEBUG ) {
@@ -21,6 +28,7 @@
 	|							Initialization		  				|
 	|																	| 
 	--------------------------------------------------------------------*/
+	loadDyslexicFont();
 	restoreFontSizeFromCookie();
 	restoreFontFromCookie();
 	var textButtonClicked;
@@ -32,6 +40,18 @@
 		decreaseTimes: MIN_ZOOM,
 		step: 1,
 	});
+
+	function loadDyslexicFont() {
+		$("head").prepend("<style type=\"text/css\">" + 
+		"@font-face {\n" +
+			"\tfont-family: \"opendyslexicregular\";\n" + 
+			"\tsrc: url('" + fontDirectoryURI + "opendyslexic-regular-webfont.woff') format('woff');\n" + 
+			"\turl('" + fontDirectoryURI + "opendyslexic-regular-webfont.woff2') format('woff2');\n" + 
+			"\tfont-weight: normal;" +
+			"\tfont-style: normal;" +
+		"}\n" + 
+		"</style>");
+	}
 	
 	/*------------------------------------------------------------------
 	|																	|

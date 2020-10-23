@@ -22,6 +22,10 @@ class InfrastructureConstants {
 		return \plugins_url( '/dist/scripts/', dirname( __FILE__ ) );
 	}
 
+	public static function get_fonts_directory_uri() {
+		return \plugins_url( '/dist/fonts/', dirname( __FILE__ ) );
+	}
+
 	public static function get_stylesheet_directory_uri() {
 		return \plugins_url( '/dist/css/', dirname( __FILE__ ) );
 	}
