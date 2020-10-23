@@ -46,6 +46,13 @@ class AssetLoader {
 			true
 		);
 		\wp_enqueue_script(
+			'font-size-accessibility',
+			InfrastructureConstants::get_scripts_directory_uri() . '/fontsize.min.js',
+			array( 'jquery' ),
+			'0.0.1',
+			true
+		);
+		\wp_enqueue_script(
 			'scorpiotek-accessibility',
 			InfrastructureConstants::get_scripts_directory_uri() . '/wp-accessibility-plugin.js',
 			array( 'jquery' ),
