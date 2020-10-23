@@ -2,8 +2,8 @@
 
 @font-face {
 	font-family: 'opendyslexicregular';
-	src: url('../fonts/opendyslexic-regular-webfont.woff2') format('woff2'),
-			 url('../fonts/opendyslexic-regular-webfont.woff') format('woff');
+	src: url('http://localhost:81/dissability.vinnies.org.au/wp-content/plugins/wp-accessibility-plugin/dist/fonts/opendyslexic-regular-webfont.woff') format('woff2'),
+			 url('http://localhost:81/dissability.vinnies.org.au/wp-content/plugins/wp-accessibility-plugin/dist/fonts/opendyslexic-regular-webfont.woff2') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }

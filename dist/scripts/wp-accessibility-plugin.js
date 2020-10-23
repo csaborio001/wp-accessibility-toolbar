@@ -21,8 +21,8 @@
 	|							Initialization		  				|
 	|																	| 
 	--------------------------------------------------------------------*/
-	// verifyCookieHasValidValues();
 	restoreFontSizeFromCookie();
+	restoreFontFromCookie();
 	var textButtonClicked;
 	if (isNaN(textButtonClicked)) {textButtonClicked = 0 };
 	$('body').FontSize({
@@ -55,10 +55,18 @@
 
 	$('#btn-reset').on('click', function() {
 		resetFontSize();
+		restoreFont();
 		if (DEBUG) {
 			displayButtonInformation(this)
 		}
 	});
+
+	$('#btn-dyslexic').on('click', function() {
+		toggleDyslexicFont();
+		if (DEBUG) {
+			displayButtonInformation(this)
+		}
+	});	
 
 	/*------------------------------------------------------------------
 	|																	|
@@ -92,7 +100,7 @@
 
 	/*------------------------------------------------------------------
 	|																	|
-	|							Cookie Routines			  				|
+	|							Font Routines			  				|
 	|																	| 
 	--------------------------------------------------------------------*/
 
@@ -142,14 +150,49 @@
 		textButtonClicked = cookieTextButtonClicked;
 	}
 
-	function verifyCookieHasValidValues() {
-		cookieTextButtonClicked = parseInt(Cookies.get('textButtonClicked'));
-		if (isNaN(cookieTextButtonClicked)) {return 0;}
-		if ( cookieTextButtonClicked > MAX_ZOOM || cookieTextButtonClicked < MIN_ZOOM ) {
-			Cookies.set( 'textButtonClicked', 0);
-			textButtonClicked = 0;
+	/*------------------------------------------------------------------
+	|																	|
+	|							Dyslexic Font Routines			  		|
+	|																	| 
+	--------------------------------------------------------------------*/
+
+	function toggleDyslexicFont() {
+		var currentFont;
+		cookieFont = Cookies.get('currentFont');
+		/** There is no cookie set with the current font, must be first load. */
+		currentFont = $(document.body).css('font-family');
+		if ( 'opendyslexicregular' !== currentFont ) {
+			/** Need to get this font name somewhere for the reset. */
+			Cookies.set('originalFont', currentFont);
+		}
+
+		// Switch to open dyslexic.
+		if ( 'opendyslexicregular' !== currentFont ) {
+			Cookies.set( 'currentFont', 'opendyslexicregular');
+			$(document.body).css('font-family', 'opendyslexicregular');
+		} else {
+			restoreFont();
 		}
 	}
+
+	function restoreFontFromCookie() {
+		fontToRestore = Cookies.get('currentFont');
+		currentFont    = currentFont = $(document.body).css('font-family');
+		if ( currentFont == fontToRestore ) {
+			if (DEBUG) {
+				console.log('No need to restore font, cookie matches actual');
+			}
+			return;
+		} else { 
+			$(document.body).css('font-family', fontToRestore);
+		}
+	}
+	function restoreFont() {
+		originalFont = Cookies.get('originalFont');
+		$(document.body).css('font-family', originalFont);
+		Cookies.set( 'currentFont', originalFont);
+	} 
+
 
 	/*------------------------------------------------------------------
 	|																	|
