@@ -72,9 +72,9 @@ class AssetLoader {
 
 	public function load_plugin_stylesheets() {
 		\wp_register_style(
-			'accessibility_css',
+			'accessibility-css',
 			InfrastructureConstants::get_stylesheet_directory_uri() . '/wp-accessibility-plugin.css',
 		);
-		\wp_enqueue_style( 'accessibility_css' );
+		\wp_enqueue_style( 'accessibility-css' );
 	}
 }

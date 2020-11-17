@@ -18,10 +18,6 @@ class OxyShortCodes {
 	}
 
 	public function add_st_accessibility_toolbar() {
-		global $post;
-		/** Do stuff */
-		// echo '<h1>Hello Cow</h1>';
-		// wp_reset_postdata();
 		AccessibilityControls::display_button_sizes();
 	}
 }

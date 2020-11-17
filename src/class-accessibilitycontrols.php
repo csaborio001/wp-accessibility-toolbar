@@ -10,10 +10,14 @@ namespace ScorpioTek\WordPress\Accessibility;
 
 class AccessibilityControls {
 	public static function display_button_sizes() {
-		echo '<button title="Reset Font" class="font-size-change" id="btn-reset" name="btn-reset">A</button>';
-		echo '<button title="Decrease Font Size" class="font-size-change" id="btn-decrease" name="btn-decrease">-A</button>';
-		echo '<button title="Increase Font Size" class="font-size-change" id="btn-increase" name="btn-increase">+A</button>';
-		echo '<button title="Toggle Dyslexic Font" class="font-size-change" id="btn-dyslexic" name="btn-dyslexic">D</button>';
-		echo '<button title="Toggle High Contrast Mode" class="font-size-change" id="btn-contrast" name="btn-contrast">O</button>';
+	?>
+		<div id="wp-accessibility">
+			<button title="Reset Font" class="font-size-change" id="btn-reset" name="btn-reset">A</button>
+			<button title="Decrease Font Size" class="font-size-change" id="btn-decrease" name="btn-decrease">-A</button>
+			<button title="Increase Font Size" class="font-size-change" id="btn-increase" name="btn-increase">+A</button>
+			<button title="Toggle Dyslexic Font" class="font-size-change" id="btn-dyslexic" name="btn-dyslexic">D</button>
+			<button title="Toggle High Contrast Mode" class="font-size-change" id="btn-contrast" name="btn-contrast">O</button>
+		</div>
+	<?php
 	}
 }
