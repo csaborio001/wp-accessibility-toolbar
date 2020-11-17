@@ -1,19 +1,25 @@
-const gulp          = require("gulp"),
+const gulp    = require("gulp"),
 sass          = require("gulp-sass"),
+uglify        = require('gulp-uglify'),
+rename        = require('gulp-rename'),
+imagemin        = require('gulp-imagemin'),
 sourcemaps    = require("gulp-sourcemaps"),
 browserSync   = require("browser-sync").create(),
 source        = "./process/",
-dest          = "./dist/";
-pluginDir     = "./"
-sass.compiler       = require("node-sass");
+dest          = "./dist/"
+sass.compiler = require("node-sass");
 
 
 function php() {
-  return gulp.src( [pluginDir + "wp-accessibility-plugin.php", pluginDir + "src/**/*.php"]);
+  return gulp.src( ["./src/**/*.php"]);
 }
 
 function js() {
-  return gulp.src(dest + "scripts/**/*.js");
+  return gulp
+  .src(source + "/scripts/*.js")
+  // .pipe(uglify())
+  .pipe(rename({ suffix: '.min' }))
+  .pipe(gulp.dest(dest + "scripts"));
 }
 
 function styles() {
@@ -22,14 +28,28 @@ function styles() {
 	.pipe(sourcemaps.init())
 	.pipe(sass().on('error', sass.logError))
   .pipe(sourcemaps.write())
-  // .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+  .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
 	.pipe(gulp.dest(dest + "css"));
 }
 
+function images() {
+  return gulp
+  .src(source + "/img/**/*.*")
+  .pipe(imagemin())
+  .pipe(gulp.dest(dest + "img"));
+}
+
 function watch() {
-  gulp.watch(source + "sass/**/*.scss", styles).on("change", browserSync.reload);
-  gulp.watch(dest + "scripts/**/*.js", js).on("change", browserSync.reload);
+
+  // Processes the JS files inside process/scripts and sends minimized output to dist/scripts.
+  gulp.watch(source + "scripts/**/*.js", js).on("change", browserSync.reload);
+  // Processes the SASS files inside process/sass and sends minimized output to dist/css.
   gulp.watch(source + "sass/**/*", styles).on("change", browserSync.reload);
+  // Processes any image that is modified.
+  gulp.watch(source + "img/**/*", images).on("change", browserSync.reload);
+  // Keeps a lookout for files that could have changed inside the src folder.
+  gulp.watch("src/**/*", php).on("change", browserSync.reload);
+
 }
 
 function server() {

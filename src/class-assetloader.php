@@ -40,7 +40,7 @@ class AssetLoader {
 	public function load_plugin_scripts() {
 		\wp_enqueue_script(
 			'js.cookie',
-			InfrastructureConstants::get_scripts_directory_uri() . '/js.cookie.js',
+			InfrastructureConstants::get_scripts_directory_uri() . '/js.cookie.min.js',
 			array(),
 			'2.2.0',
 			true
@@ -54,7 +54,7 @@ class AssetLoader {
 		);
 		\wp_enqueue_script(
 			'scorpiotek-accessibility',
-			InfrastructureConstants::get_scripts_directory_uri() . '/wp-accessibility-plugin.js',
+			InfrastructureConstants::get_scripts_directory_uri() . '/wp-accessibility-plugin.min.js',
 			array( 'jquery' ),
 			InfrastructureConstants::get_plugin_version(),
 			true
