@@ -3,10 +3,10 @@
  * Loads the CSS and Javascript needed for the website, also hooks up the communication between
  * the PHP files and the Javascript files.
  *
- * @package scorpiotek-accessibility-plugin
+ * @package scorpiotek-accessibility
  */
 
-namespace ScorpioTek\WordPress\Accessibility;
+namespace ScorpioTek\Accessibility\Controls;
 
 class AccessibilityControls {
 	public static function display_button_sizes() {

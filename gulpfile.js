@@ -11,7 +11,7 @@ sass.compiler = require("node-sass");
 
 
 function php() {
-  return gulp.src( ["./src/**/*.php"]);
+  return gulp.src( ["./scorpiotek-accessibility.php", "./src/**/*.php"]);
 }
 
 function js() {
@@ -48,7 +48,7 @@ function watch() {
   // Processes any image that is modified.
   gulp.watch(source + "img/**/*", images).on("change", browserSync.reload);
   // Keeps a lookout for files that could have changed inside the src folder.
-  gulp.watch("src/**/*", php).on("change", browserSync.reload);
+  gulp.watch(["./scorpiotek-accessibility.php", "./src/**/*.php"], php).on("change", browserSync.reload);
 
 }
 
@@ -56,7 +56,7 @@ function server() {
   browserSync.init({
 	notify: false,
 	browser: "firefox developer edition",
-	proxy: "http://localhost/dissability.vinnies.org.au/",
+	proxy: "http://localhost:49191",
 	port:80,
   });
   watch();

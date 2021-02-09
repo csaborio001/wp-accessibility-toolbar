@@ -1,5 +1,5 @@
 {
-    "name": "scorpiotek/wp-accessibility-plugin",
+    "name": "scorpiotek/scorpiotek-accessibility",
     "description": "Enables the use of an accessibility toolbar for any WordPress website",
     "type": "wordpress-plugin",
     "authors": [
@@ -10,8 +10,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "ScorpioTek\\WordPress\\Accessibility\\": "src/",
-            "WPMuDev\\": "src/"
+            "ScorpioTek\\Accessibility\\": "src/"
         }
     }
 }

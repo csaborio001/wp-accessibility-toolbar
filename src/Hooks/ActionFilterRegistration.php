@@ -2,10 +2,10 @@
 /**
  * Contains all the actions related to user registration.
  *
- * @package scorpiotek-accessibility-plugin
+ * @package scorpiotek-accessibility
  */
 
-namespace WPMuDev;
+namespace ScorpioTek\Accessibility\Hooks;
 
 class ActionFilterRegistration {
 	/**
