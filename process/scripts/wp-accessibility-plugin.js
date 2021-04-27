@@ -202,12 +202,16 @@
 			}
 			return;
 		} else { 
-			$(document.body).css('font-family', fontToRestore);
+			$(document.body).css({
+				'cssText': 'font-family: ' + fontToRestore + ' !important;'
+			});
 		}
 	}
 	function resetFont() {
 		originalFont = Cookies.get('originalFont');
-		$(document.body).css('font-family', originalFont);
+		$(document.body).css({
+			'cssText': 'font-family: ' + originalFont + ' !important;'
+		});
 		Cookies.set( 'currentFont', originalFont);
 	} 
 
