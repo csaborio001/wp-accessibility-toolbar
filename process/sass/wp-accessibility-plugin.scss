@@ -8,8 +8,9 @@ $button-text-hover-color: #004a99;
 /* Include Open Dyslexic Font */
 @font-face {
 	font-family: 'opendyslexicregular';
-	src: url('../fonts/opendyslexic-regular-webfont.woff2') format('woff2'),
-			 url('../fonts/opendyslexic-regular-webfont.woff') format('woff');
+	src: url('../fonts/opendyslexic-regular-webfont.woff') format('woff'),
+		url('../fonts/opendyslexic-regular-webfont.woff2') format('woff2');
+		
 	font-weight: normal;
 	font-style: normal;
 }

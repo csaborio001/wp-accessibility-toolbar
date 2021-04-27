@@ -74,5 +74,5 @@ class AssetLoader {
 				return wp_rand( 1, 1000 );
 			}
 		}
-	}	
+	}
 }

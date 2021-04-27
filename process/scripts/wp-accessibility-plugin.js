@@ -25,7 +25,7 @@
 	|							Initialization		  				|
 	|																	| 
 	--------------------------------------------------------------------*/
-	loadDyslexicFont();
+
 
 	restoreFontSizeFromCookie();
 	restoreFontFromCookie();
@@ -40,18 +40,6 @@
 		decreaseTimes: MIN_ZOOM,
 		step: 1,
 	});
-
-	function loadDyslexicFont() {
-		$("head").prepend("<style type=\"text/css\">" + 
-		"@font-face {\n" +
-			"\tfont-family: \"opendyslexicregular\";\n" + 
-			"\tsrc: url('" + fontDirectoryURI + "opendyslexic-regular-webfont.woff') format('woff');\n" + 
-			"\turl('" + fontDirectoryURI + "opendyslexic-regular-webfont.woff2') format('woff2');\n" + 
-			"\tfont-weight: normal;" +
-			"\tfont-style: normal;" +
-		"}\n" + 
-		"</style>");
-	}
 	
 	/*------------------------------------------------------------------
 	|																	|
@@ -197,7 +185,9 @@
 		// Switch to open dyslexic.
 		if ( 'opendyslexicregular' !== currentFont ) {
 			Cookies.set( 'currentFont', 'opendyslexicregular');
-			$(document.body).css('font-family', 'opendyslexicregular');
+			$(document.body).css({
+				'cssText': 'font-family:opendyslexicregular !important;'
+			});
 		} else {
 			resetFont();
 		}
