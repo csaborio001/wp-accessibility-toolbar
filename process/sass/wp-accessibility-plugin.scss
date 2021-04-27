@@ -21,17 +21,13 @@ $button-text-hover-color: #004a99;
 }
 
 #wp-accessibility {
+	display: flex;
+	flex-direction: row;
 	button {
 		cursor: pointer;
 		width: $button-width;
 		height: $button-height;
-		background: $button-background-color;
-		color: $button-text-color;
-		border-radius: 10px;
-		&:hover {
-			background: $button-hover-background-color;
-			color: $button-text-hover-color;
-		}		
+		margin-right: 1px;
 	}
 }
 
