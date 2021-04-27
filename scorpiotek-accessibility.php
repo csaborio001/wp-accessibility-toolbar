@@ -4,7 +4,7 @@ Plugin Name: ScorpioTek Accessibility
 Plugin URI: https://github.com/csaborio001/wp-accessibility-toolbar.git
 Description: Enables the use of an accessibility toolbar for any WordPress website.
 Author: ScorpioTek
-Version: 0.0.0.2
+Version: 0.0.0.3
 Author URI: https://www.scorpiotek.com
 */
 

@@ -1,3 +1,10 @@
+$button-width: 40px;
+$button-height: 40px;
+$button-background-color: #fff;
+$button-text-color: #004a99;
+$button-hover-background-color:#ffee00;
+$button-text-hover-color: #004a99;
+
 /* Include Open Dyslexic Font */
 @font-face {
 	font-family: 'opendyslexicregular';
@@ -15,9 +22,15 @@
 #wp-accessibility {
 	button {
 		cursor: pointer;
-		padding: 4px;
-	}
-	button:hover {
-		font-weight: 900;
+		width: $button-width;
+		height: $button-height;
+		background: $button-background-color;
+		color: $button-text-color;
+		border-radius: 10px;
+		&:hover {
+			background: $button-hover-background-color;
+			color: $button-text-hover-color;
+		}		
 	}
 }
+

@@ -243,7 +243,7 @@
 		if ( 'false' == highContrastEnabled ) {
 			/** Stylesheet has not been appended */
 			if ( 0 === $('link[title=high-contrast]').length) {
-				$("head").append($("<link rel='stylesheet' title='high-contrast' href='" + stylesheetDirectoryURI + "a11y-contrast.css' type='text/css' media='screen' />"));
+				$("head").append($("<link rel='stylesheet' title='high-contrast' href='" + stylesheetDirectoryURI + "/a11y-contrast.css' type='text/css' media='screen' />"));
 			/** Stylesheet is appended, we only need to toggle the enabled switch. */
 			} else {
 				$('link[title=high-contrast]')[0].disabled=false;
